@@ -22,21 +22,21 @@ public class RequestController {
     }*/
 
     // Spring Boot 设置了形参后，会根据形参的类型自动做类型转换
-/*    @RequestMapping("/startPostman")
-    public String startPostman(String name , Integer age) {
+    @RequestMapping("/startPostman")
+    public String startPostman(@RequestParam(required = false) String name , Integer age) {
 
         System.out.println(name + " - " + age);
 
         return " This is OK !";
-    }*/
+    }
 
     // 请求参数名和参数名不一致，又要接收到数据，通过 RequestPrarm 指定请求参数名
-    @RequestMapping("/startPostman")
-    public String startPostman(@RequestParam(name = "name") String username , Integer age) {
+/*    @RequestMapping("/startPostman")
+    public String startPostman(@RequestParam(name = "name",required = false) String username , Integer age) {
 
         System.out.println(username + " - " + age);
 
         return " This is OK !";
-    }
+    }*/
 
 }
