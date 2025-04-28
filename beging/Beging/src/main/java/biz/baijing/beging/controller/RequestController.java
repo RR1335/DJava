@@ -2,9 +2,7 @@ package biz.baijing.beging.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import biz.baijing.beging.pojo.User;
 
@@ -14,6 +12,19 @@ import java.util.List;
 
 @RestController
 public class RequestController {
+
+    @RequestMapping("/path/{id}/{name}")
+    public String pathParam(@PathVariable Integer id,@PathVariable  String name) {
+        System.out.println(id + " - " + name);
+        return "Path Params is OK!!";
+    }
+
+    @RequestMapping("/jsonParam")
+    public String jsonParam(@RequestBody User user) {
+        System.out.println(user);
+        return "JSON Param is OK ";
+    }
+
 
     @RequestMapping("/dateParam")
     public String dateParam(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime updateTime) {
