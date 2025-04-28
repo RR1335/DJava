@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<emps>
+
+    <emp>
+        <name>武打片</name>
+        <age>32</age>
+        <image>https://picx.zhimg.com/70/v2-309f97c6d87a37159dc294ccf34d6772_1440w.avis</image>
+        <!-- 1 男，2 女 -->
+        <gender>1</gender>
+        <!--  1 教授， 2 讲师， 3 辅导员 -->
+        <job>1</job>
+    </emp>
+
+    <emp>
+        <name>落子无悔</name>
+        <age>36</age>
+        <image>https://picx.zhimg.com/70/v2-309f97c6d87a37159dc294ccf34d6772_1440w.avis</image>
+        <gender>1</gender>
+        <job>1</job>
+    </emp>
+
+    <emp>
+        <name>三两肉</name>
+        <age>27</age>
+        <image>https://picx.zhimg.com/70/v2-309f97c6d87a37159dc294ccf34d6772_1440w.avis</image>
+        <gender>0</gender>
+        <job>1</job>
+    </emp>
+
+
+    <emp>
+        <name>二两碎银</name>
+        <age>61</age>
+        <image>https://picx.zhimg.com/70/v2-309f97c6d87a37159dc294ccf34d6772_1440w.avis</image>
+        <gender>1</gender>
+        <job>2</job>
+    </emp>
+
+
+
+    <emp>
+        <name>谁的泪</name>
+        <age>32</age>
+        <image>https://picx.zhimg.com/70/v2-309f97c6d87a37159dc294ccf34d6772_1440w.avis</image>
+        <gender>2</gender>
+        <job>3</job>
+    </emp>
+
+
+
+</emps>
