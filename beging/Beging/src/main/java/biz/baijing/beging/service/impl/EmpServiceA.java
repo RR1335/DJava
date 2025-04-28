@@ -1,0 +1,38 @@
+package biz.baijing.beging.service.impl;
+
+import biz.baijing.beging.dao.EmpDao;
+import biz.baijing.beging.dao.impl.EmpDaoA;
+import biz.baijing.beging.pojo.Emp;
+import biz.baijing.beging.service.EmpService;
+import org.dom4j.DocumentException;
+
+import java.util.List;
+
+public class EmpServiceA implements EmpService {
+    private EmpDao empDao = new EmpDaoA();
+
+    @Override
+    public List<Emp> listEmp() throws DocumentException {
+        // 获取 dao 层数据
+        List<Emp> emps = empDao.listEmp();
+
+        emps.stream().forEach(emp -> {
+            String gender = emp.getGender();
+            if(gender.equals("1")){
+                emp.setGender("男");
+            }else if(gender.equals("2")){
+                emp.setGender("女");
+            }
+
+            String job = emp.getJob();
+            if(job.equals("1")){
+                emp.setJob("教授");
+            } else if (job.equals("2")){
+                emp.setJob("讲师");
+            } else if (job.equals("3")){
+                emp.setJob("辅导员");
+            }
+        });
+        return emps;
+    }
+}
