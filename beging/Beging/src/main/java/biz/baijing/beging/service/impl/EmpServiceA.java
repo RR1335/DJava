@@ -4,8 +4,11 @@ import biz.baijing.beging.dao.EmpDao;
 import biz.baijing.beging.dao.impl.EmpDaoA;
 import biz.baijing.beging.pojo.Emp;
 import biz.baijing.beging.service.EmpService;
+import jakarta.annotation.Resource;
 import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +16,9 @@ import java.util.List;
 
 //@Component
 @Service
+@Resource(type = EmpDaoA.class)
 public class EmpServiceA implements EmpService {
+
     @Autowired
     private EmpDao empDao ;
 
