@@ -5,11 +5,17 @@ import biz.baijing.beging.dao.impl.EmpDaoA;
 import biz.baijing.beging.pojo.Emp;
 import biz.baijing.beging.service.EmpService;
 import org.dom4j.DocumentException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//@Component
+@Service
 public class EmpServiceA implements EmpService {
-    private EmpDao empDao = new EmpDaoA();
+    @Autowired
+    private EmpDao empDao ;
 
     @Override
     public List<Emp> listEmp() throws DocumentException {
