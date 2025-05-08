@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("select * from user")
+    @Select("select id from user")
     public List<User> listUser();
 
 }
