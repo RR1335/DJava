@@ -50,8 +50,18 @@ public interface EmpMapper {
     // concat 防止 SQL 注入
 //    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
 //            " from emp where name like '%${name}%' and gender = #{gender} and entrydate between #{begin} and #{end} order by update_time desc")
-    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
+/*    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
             " from emp where name like concat('%',#{name},'%') and gender = #{gender} and entrydate between #{begin} and #{end} order by update_time desc")
+    public List<Emp> selectAll(String name, Short gender, LocalDate begin, LocalDate end);*/
+
+
+    // 动态SQL语句 <where> 标签
     public List<Emp> selectAll(String name, Short gender, LocalDate begin, LocalDate end);
+
+    // 动态更新信息
+    public void updateEmp(Emp emp);
+
+    // 批量删除
+    public void deleteEmp(List<Integer> ids);
 
 }

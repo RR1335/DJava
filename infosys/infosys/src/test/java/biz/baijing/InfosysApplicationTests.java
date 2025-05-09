@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -65,7 +66,6 @@ class InfosysApplicationTests {
         // 插入操作
         empMapper.update(emp);
 
-
     }
 
     @Test
@@ -90,8 +90,29 @@ class InfosysApplicationTests {
 
     @Test
     public void testSelectAll() {
-        List<Emp> emps = empMapper.selectAll("张",(short)1,LocalDate.of(2010,1,1),LocalDate.of(2023,12,1));
-        System.out.println(emps);
+        List<Emp> emps = empMapper.selectAll(null,(short)1,null,null);
+    }
+
+    @Test
+    public void testUpdateEmp() {
+        // 构造员工对象
+        Emp emp = new Emp();
+        //更新数据员工的 id
+        emp.setId(19);
+        // 员工对象属性赋值
+//        emp.setUsername("wudishaohuogun");
+        emp.setName("春花儿");
+        emp.setUpdateTime(LocalDateTime.now());
+
+        // 插入操作
+        empMapper.updateEmp(emp);
+
+    }
+
+    @Test
+    public void testDeleteEmp() {
+        List<Integer> ids = Arrays.asList(1,2,3);
+        empMapper.deleteEmp(ids);
     }
 
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 必须是 EmpMapper 的全类名 -->
+<mapper namespace="biz.baijing.mapper.EmpMapper">
+
+    <sql id="EmpSelect">
+        select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time
+        from emp
+    </sql>
+
+
+    <update id="updateEmp">
+        update emp
+        <set>
+            <if test ="username != null">username = #{username},</if>
+            <if test ="name != null">name = #{name},</if>
+            <if test ="gender != null">gender = #{gender},</if>
+            <if test ="image != null">image = #{image},</if>
+            <if test ="job != null">job = #{job},</if>
+            <if test ="job != null">entrydate = #{job},</if>
+            <if test ="deptId != null">dept_id = #{deptId},</if>
+            <if test ="updateTime != null">update_time = #{updateTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- resultType 是单挑记录封装的类型，这里必须是全类名   -->
+    <select id="selectAll" resultType="biz.baijing.pojo.Emp">
+<!--        select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time-->
+<!--        from emp-->
+        <include refid="EmpSelect" />
+        <where>
+            <if test="name != null">
+                name like concat('%',#{name},'%')
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="begin != null and end !=null">
+                and entrydate between #{begin} and #{end}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+
+    <!--  批量删除  -->
+    <delete id="deleteEmp">
+        delete from emp where id  in
+        <!--
+            collection  — 遍历的集合
+            item — 遍历出来的元素
+            separator — 分割符
+            open — 遍历开始拼接的 SQL 元素
+            close — 遍历结束后拼接的 SQL 元素
+            -->
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
