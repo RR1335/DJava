@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 class InfosysApplicationTests {
@@ -84,6 +85,13 @@ class InfosysApplicationTests {
     public void testSelect02() {
         Emp emp = empMapper.select(15);
         System.out.println(emp);
+    }
+
+
+    @Test
+    public void testSelectAll() {
+        List<Emp> emps = empMapper.selectAll("张",(short)1,LocalDate.of(2010,1,1),LocalDate.of(2023,12,1));
+        System.out.println(emps);
     }
 
 

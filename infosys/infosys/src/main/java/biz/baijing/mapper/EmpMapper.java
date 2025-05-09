@@ -3,6 +3,9 @@ package biz.baijing.mapper;
 import biz.baijing.pojo.Emp;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Mapper
 public interface EmpMapper {
 
@@ -41,5 +44,11 @@ public interface EmpMapper {
     // Mybatis 驼峰命名的开关 , properties 文件中配置 mybatis.configuration.map-underscore-to-camel-case=true
     @Select("select * from emp where id=#{id}")
     public Emp select(Integer id);
+
+
+    // '%#{name}%'  变成 $
+    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time" +
+            " from emp where name like '%${name}%' and gender = #{gender} and entrydate between #{begin} and #{end} order by update_time desc")
+    public List<Emp> selectAll(String name, Short gender, LocalDate begin, LocalDate end);
 
 }
