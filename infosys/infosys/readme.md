@@ -12,5 +12,16 @@
             " from emp where name like '%${name}%' and gender = #{gender} and entrydate between #{begin} and #{end} order by update_time desc")
     public List<Emp> selectAll(String name, Short gender, LocalDate begin, LocalDate end);
 ```
-#{value} 是不能出现在 '' 中的；需要替换成 ${value} 。
+#{value} 是不能出现在 '% %' 中的；需要替换成 ${value} 。 %% 符号中间是字符串。
 结果就是 value 直接出现在 SQL 语句中参与了“拼接”。
+
+# concat 拼接字符串
+
+```sql
+concat('%','#{name}','%');
+```
+结果
+```java
+==>  Preparing: select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time from emp where name like concat('%',?,'%') and gender = ? and entrydate between ? and ? order by update_time desc
+```
+? 占位符出现了
